@@ -18,20 +18,22 @@ const getProject = () => {
     let req = {
       method: "POST",
       body: JSON.stringify(data),
-      'Content-Type': 'application/json'
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
     };
-    let get_project = await fetch(apifetch, req);
-    let json = await get_project.json();
-    console.log(json);
+    try {
+      let get_project = await fetch(apifetch, req);
+      let jsonData = await get_project.json();
+    console.log(jsonData);
+    } catch (error) {
+      console.log(req.message);
+    }
+    
     form.reset();
   });
 
-
- 
-
-  // let get_project = await fetch(apifetch, req);
-  // let json = await get_project.json();
-  // console.log(json);
 };
 
 getProject();
