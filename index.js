@@ -5,7 +5,7 @@ const domain = document.getElementById("domain");
 const form = document.forms['form']
 
 
-const getProject = () => {
+
   const apifetch = `${baseUrl}/api/seo/get-project`;
   form.addEventListener("submit", async (e)=> {
     e.preventDefault();
@@ -25,15 +25,15 @@ const getProject = () => {
     };
     try {
       let get_project = await fetch(apifetch, req);
-      let jsonData = await get_project.json();
-    console.log(jsonData);
+      jsonData = await get_project.json();
+    console.log(jsonData.project.meta_description);
     } catch (error) {
       console.log(req.message);
     }
+
     
     form.reset();
   });
 
-};
 
-getProject();
+
