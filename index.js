@@ -4,8 +4,6 @@ const key = document.getElementById("key");
 const domain = document.getElementById("domain");
 const form = document.forms['form']
 
-
-
   const apifetch = `${baseUrl}/api/seo/get-project`;
   form.addEventListener("submit", async (e)=> {
     e.preventDefault();
@@ -26,12 +24,10 @@ const form = document.forms['form']
     try {
       let get_project = await fetch(apifetch, req);
       jsonData = await get_project.json();
-    console.log(jsonData.project.meta_description);
+    console.log(jsonData.project);
     } catch (error) {
       console.log(req.message);
     }
-
-    
     form.reset();
   });
 
