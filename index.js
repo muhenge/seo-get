@@ -1,18 +1,8 @@
 const baseUrl = "https://api-seo.cloudhost.cm";
 
-const key = document.getElementById("key");
-const domain = document.getElementById("domain");
-const form = document.forms['form']
-
   const apifetch = `${baseUrl}/api/seo/get-project`;
-  form.addEventListener("submit", async (e)=> {
-    e.preventDefault();
-    let data = {
-      app_key: key.value,
-      domain: domain.value
-    };
-    console.log(data);
 
+  const apiCall = async (data) => {
     let req = {
       method: "POST",
       body: JSON.stringify(data),
@@ -24,12 +14,15 @@ const form = document.forms['form']
     try {
       let get_project = await fetch(apifetch, req);
       jsonData = await get_project.json();
-    console.log(jsonData.project);
+      console.log(jsonData.project);
     } catch (error) {
       console.log(req.message);
     }
-    form.reset();
+  }
+
+  apiCall({
+    app_key: 'SEO-Crypt237njRDYalYFeRFm7UBTNAp',
+    domain: 'funny'
   });
-
-
+   
 
